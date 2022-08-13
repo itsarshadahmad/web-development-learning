@@ -1,0 +1,9 @@
+.color {
+    color: rebeccapurple;
+    font-size: 2rem;
+}
+
+.red {
+    background-color: red;
+    color: white;
+}

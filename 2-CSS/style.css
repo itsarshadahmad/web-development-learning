@@ -1,0 +1,282 @@
+/* css syntax */
+/* selector {
+  property: value;
+} */
+
+/* CSS variable declaration */
+:root {
+  --background: goldenrod;
+  --background-1000: pink;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Linear Gradient */
+  /* background: linear-gradient(60deg, pink, lightsalmon); */
+  /* background: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  ); */
+}
+
+/* flexbox */
+.flex {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  /* Variable call */
+  background-color: var(--background);
+  color: #fff;
+  font-size: 3rem;
+  gap: 1rem;
+}
+
+.flex > .para {
+  font-weight: bold;
+  /* width: 200px; */
+  background-color: black;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+#unique {
+  /* order: -1; */
+  flex-grow: 4;
+  flex-shrink: 4;
+}
+
+/* box shadow */
+.shadow {
+  width: 100px;
+  height: 100px;
+  background-color: blanchedalmond;
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+  cursor: pointer;
+  /* Horizontal-offset(required) vertical-offset(required) blur spread color */
+  box-shadow: 5px 10px 8px 10px #888888;
+}
+
+/* Background Image */
+.bg-image {
+  background-image: url("./AA.png");
+  width: 500px;
+  height: 400px;
+  margin: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Guide CSS */
+.syntax {
+  margin: 50px;
+  padding: 50px;
+  background-color: thistle;
+  font-size: 2rem;
+}
+.tab {
+  padding-left: 15px;
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  background-color: cornflowerblue;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+}
+
+/* Float */
+.float-container {
+  width: 800px;
+  height: 200px;
+  text-align: center;
+  background-color: turquoise;
+  margin: 20px;
+  padding: 20px;
+}
+
+.float {
+  width: 200px;
+  height: 200px;
+  background-color: tan;
+  /* Floats content at specified side --> left, right of given container and its values */
+  float: right;
+  /* Clears content at specified side --> both clears given space left and right */
+  /* clear: both; */
+}
+
+/* box model */
+.box-model {
+  border: 5px solid goldenrod;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* position */
+.position {
+  height: 500px;
+  width: 500px;
+  font-size: 2rem;
+  background-color: tomato;
+  margin: 40px;
+}
+
+.absolute {
+  position: absolute;
+  right: 20px;
+  top: 4000px;
+  color: red;
+}
+
+.relative {
+  position: relative;
+  top: 40px;
+  /* right: 150px; */
+  left: 100px;
+  /* bottom: 100px; */
+}
+
+.sticky {
+  position: sticky;
+  top: 80px;
+  right: 40px;
+}
+
+.fixed {
+  position: fixed;
+  top: 10px;
+  color: blue;
+  font-size: 4rem;
+}
+
+.index-1,
+.index-2,
+.index-3 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
+
+.index-1 {
+  z-index: 1;
+  left: 0px;
+  background-color: lightsalmon;
+}
+
+.index-2 {
+  z-index: 10;
+  left: 100px;
+  background-color: lightgreen;
+}
+
+.index-3 {
+  z-index: 100;
+  left: 200px;
+  background-color: lightseagreen;
+}
+
+/* Media Query */
+@media only screen and (max-width: 1000px) {
+  body {
+    background-color: var(--background-1000);
+  }
+}
+
+/* CSS Animation */
+/* The animation code */
+/* @keyframes example {
+  from {
+    background-color: pink;
+  }
+  to {
+    background-color: lightcoral;
+  }
+} */
+/* The element to apply the animation to */
+/* .anim-container {
+  width: 100px;
+  height: 100px;
+  background-color: lightcoral;
+  animation-name: example;
+  animation-duration: 4s;
+} */
+
+/* The animation code */
+@keyframes example {
+  0% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    background-color: yellow;
+    left: 200px;
+    top: 0px;
+  }
+  50% {
+    background-color: blue;
+    left: 200px;
+    top: 200px;
+  }
+  75% {
+    background-color: green;
+    left: 0px;
+    top: 200px;
+  }
+  100% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
+}
+/* The element to apply the animation to */
+.anim-container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Grid */
+/* TODO: CSS GRID */
+.grid {
+  display: grid;
+  /* gap between grid */
+  grid-gap: 10px;
+  /* 1fr 1fr 1fr */
+  grid-template-columns: repeat(3, auto);
+  /* grid-template-rows: minmax(); */
+  /* margin: 20px; */
+}
+
+.grid-item {
+  /* width: 500px;
+  height: 500px; */
+  background-color: violet;
+}
