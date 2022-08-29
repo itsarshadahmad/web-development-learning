@@ -1,0 +1,16 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = "mysql://root:123456@localhost:3306/learn_prisma"
+}
+
+model Users {
+    id         Int      @id @default(autoincrement())
+    name       String
+    email      String   @unique
+    profession String
+    createdAt  DateTime
+}
