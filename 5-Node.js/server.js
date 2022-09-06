@@ -178,6 +178,10 @@
 // app.get("/:id", (req, res) => {
     // * Path Parameters --> These are part of the request URL, which are accessed using the placeholders preceded by ':'. ex:- /customer/:id
     // res.send(req.params)
+// })
+
+// app.get("/?:id", (req, res) => {
+    // id=req.query.id
     // * Query Parameter --> These are appended to the end of the request URL, Query parameters are appended to the end of the request URL, following '?' and listed in key-value pairs, separated by '&'. ex:- ?id=1&type=new 
     // res.send(req.query)
 // })

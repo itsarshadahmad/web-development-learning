@@ -50,12 +50,16 @@ module.exports = router
 // * Guideliness to follow to build RESTful API
 // - Accept and respond with JSON
 // - Use noun instead of verbs in endpoint paths
-// - Name collection with plurals noun
+// - Name collection with plural noun
 // - Nesting resources for hierarchical objects
 // - Handle error gracefully and return standard error codes
 // - Allow filtering, sorting, and pagination
 // - Maintain good security practices
 // - Cache data to improve performance
+// - Well Compiled Documentation
+// - Return error detail in response body
+// - Use SSL/TLS and Secure your API
+
 
 // * CRUD operation methods (http verbs)
 // Get --> used to fetch all data
