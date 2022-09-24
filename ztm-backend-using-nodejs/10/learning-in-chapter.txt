@@ -1,0 +1,46 @@
+Test using Jest:- 
+
+Jest doesn't work great with mongoose so we require to configure jest by
+jest.config.js file or package.json to set jest as testEnvironment to node.
+It keeps creating trouble to use mongoose and jest together so better to use
+documentation for guide.
+
+Testing also create problem if your mongodb server code is inside server.js 
+because test starts from app.js so keep mongodb server code in seperate 
+mongo.js file to keep it orgainized and if require can call multiple times
+which will be inside test file to connect and disconnect server.
+
+
+
+Mongodb:-
+
+Mongodb is used with mongoose to have concrete model based on schema which
+we create using mongoose which mongodb driver doesn't allows us.
+Model is convinient way to work with db which sql has but mongodb doesn't
+so mongoose helps their to achieve that. Mongodb also can't link or refer or
+in sql can join other collections or db which mongoose helps us to do in 
+rough way using ref tag or refer item in schema to link or refer to that part.
+
+Mongoose talk to mongodb driver to create any collection in db or item to 
+perform operation on. It is ODM or object (document) mapper. Mongodb store 
+data in form of bson.
+
+It is better to create model and schema of mongoose in seperate file so it
+can exported to everyone that can use to perform crud operations.
+ex:- launches.mongo.js
+
+Mongoose.connection has event which we can listen to handle certain condition
+like error, data, etc.
+
+__v is created by mongoose to follow set of mongoose model versions. by
+default version is set to 0. You can make few data work on previous model ex-
+old stored data but can change version to __v: 1 to add new details or changes
+in model of mogoose.
+
+_id is objectId which is used to store uniquely identify items of any 
+collection and _id can be used to get time stamp because internally mongodb
+it uses timestamp and abstacted code create unqiue item in your collection 
+mongodb.
+
+
+

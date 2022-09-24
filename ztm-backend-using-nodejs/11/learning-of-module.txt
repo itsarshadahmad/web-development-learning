@@ -1,0 +1,122 @@
+API Versioning:-
+
+To create api versions you can create api route following /v1/ to specify
+version of api you are using in that part of software api. How many revisions
+you have done and does specially it changes things. Because when you make
+api for public with docs and all this might be great approach to keep developer
+know about you api version.
+
+It is great for public api because you can put changes in your api doesn't
+worry that your existing users code will break changes. They can keep using
+previous version until they decide to change their api accordingly. To 
+create api version you require to group version in one path or route.
+
+Simple way to do is prefix your version number in express route middleware
+ex:- app.use("/v4/"). We can seperate version by defining it in complete
+seperate file to avoid collision.
+
+File name can be api.js in one version only and api.v1.js or v1.api.js for
+version based api file names which can be inside api folder in had many.
+
+ex: http://api.spacexdata.com/v4/launches/latest
+
+===========================================================================
+
+API Permissions:-
+
+You can also build api which require permission like api key to authenticate
+user so not everyone can make request or perform crud operation on your data.
+To keep data security authentication is widely used.
+
+===========================================================================
+
+API Queries:-
+
+Queries can be done in two main ways:-
+1. Query parameter where you pass your query through url and node.js handles
+it as req.param to get you requested query.
+
+2. You can also use POST method to request where your query will be passed
+through the body in json format. It is great way for complex queries
+where more your query parameter bloats things with error.
+
+Note:- urlencoded require express.urlencoded() to work in node.js but 
+better way to query send request is through json where you send your data 
+through json formatted data to server and express handles it by 
+express.json().
+
+============================================================================
+
+API Pagination:-
+
+In api pagination we send data in division by sending maybe 10 sets of data
+first then sending another 10 when requested then another and so on. Here
+data is in big sets and send all at once will slowdown performance and 
+speed of frontend client even server because it will take too much time
+to process and send all those data from server.
+
+API has option to query number of results you want in response result
+to maybe get limit to return 20 files at once, or maybe divide entire
+reponse in two parts or pages. Limit or size is for number of item you
+want in return. Page can be number of pages divide entire response you
+will be getting. ex: 100 item in Page of 2 will return 50 request each
+time where limit or size of 10 will return 10 items at once requested.
+These optionion are implemented in very highly maintained and well 
+worked apis. 
+
+We can also set pagination false option to turn of pagination entirely to 
+work on api data. It is often not default nature you need to explicity 
+do that.
+
+Pagination in api can be done as query parameter or as json request to
+query. But Adam follows query param option because our project can easily
+handle that.
+ex:localhost:8000/v1/launches?limit=50&page=1
+
+Here page defines number of page we are currently accessing and limit is
+number of item we will recieve as response. Mongodb supports limit option
+by which you can request only certain amount of item as response.
+You can chain find().limit(50) to limit number of response.
+
+By using skip(20) you can skip defined amount of results from mongodb.
+Keep your queries query.js will help with seperation of concern.
+Skip is not exactly pagination that why we require to use some maths to
+get number of skip value. In project Adam uses- skip = (page - 1) * limit;
+We can also sort data by chaining find().sort({flightNumber:1}) for 
+ascending order and -1 for descending order.
+
+============================================================================
+
+Mongodb reference collection while API Query:-
+
+You might have stored your reference information inside different collection
+you can just show all rockets information of any space craft you can access
+that part by query. You can create different query which access all required
+details about rocket through api query to return reference collection
+details so all required data is only sent to user.
+
+Refered object might have saved some id or special character to refer back
+to collection and identify information.
+
+You can build filter system as your api requires to filter all data and send
+required data only by further filtering data after specifing collection
+to retain only certain property thats how you can save your users internet
+bandwidth and also requires less time to process all those data and populate
+data in required place.
+
+To minimize api load we only access required data which will minimize api
+response time because loading too much data will slow our api.
+
+============================================================================
+
+Dotenv (.env):-
+
+env file is used to store private information like api keys, ports, etc
+private in local environment. If we paid for some service such as aws it
+is very helpful to do so because if gets leaked then you have to pay for that
+mistake. If it gets leaks then remove all users from your server host and
+change your password and api keys to avoid any problems. If you uploaded
+by mistake but haven't misused your api key still change all private 
+credentials to avoid any error because that is now on internet publicly.
+
+============================================================================
