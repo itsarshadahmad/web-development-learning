@@ -1,0 +1,187 @@
+SSL/TLS:-
+
+It is security encrypted layer which is used to communicate on internet 
+safely, without any evesdrop or man-in-middle risk. TLS is successor version 
+on SSL. ex:- SSL 1.0, SSL 2.0, SSL 3.0, TLS 1.0 and so on ....
+TLS is wrapped on https protocol for communications and keep data encrypted.
+
+SSL and TLS certificates are authorized by trusted organizations to issue
+certificates to whom browser and servers trust. Before to issue certificates
+we require to buy them but now its for free to use. Let's Encrypt is one of
+those orgainization which gives you SSL/TLS certificate. Organization might
+have some rules to which we follow in order to get certificate.
+
+Self Signed Certificate that allows us to encrypt our traffic and use https
+but because we signed ourself that's why it can't be trusted by any other.
+Only certificate authority organizations certificate is trusted.
+Self signed certificates are okay to use during development but still it can
+be prone error if put on internet that's why standard certificate issued
+by organization is necessary.
+Even your browser throws error or warn you that site is self signed and not
+safe to trusted. That's why in production we must use CA-Signed certificate.
+
+Hosting on which you host your site most likely give you SSL/TLS certificate
+for free. Services like heroku, aws, google cloud, azure, etc.
+
+OpenSSL is tool to generate self signed certificate, if you have git then
+you have OpenSSL installed in your system.
+
+Command for self signed certificate:-
+openssl 
+req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365
+
+We can create self signed certificate by using openssl command where req is 
+for request new certificate. Then we use -x509 to tell its self signed 
+certificate with -newkey that contains you used in encryption, It is also
+known as private key. Which use rsa encryption format which is most strongest
+encryption which todays tech relies on. With RSA we can specify size of the
+key that is amount of bits that key takes up. Genrally larger key size means
+stronger encryption that we can say is rsa:4096 bits large our key will be.
+We also specify -nodes that allow us to access new private key without need
+to assign a password to access it. Also because we are using development mode
+it hurdle to work on everytime to enter password to access key. Then we 
+specify that key should live in a file that can be specify by -keyout key.pem
+key.pem is file that contains out key and .pem is common format for 
+certificates. Both types uses .pem format to store private key as well as
+certificates. Which we create by -out flag and we specify name of certificate
+file which can be cert.pem. This results two file first private key file
+that is key.pem and certificate file that is cert.pem. Cert.pem is file
+which check by browser to certify and encrypt your request. In last we
+specify validity of certificate by -days flag and days 365 for year long
+certificate. By default if we don't mension date will be 30 days. We should
+generate bit long certificate than 30 days but not that much that long that
+is too long because certificate is stolen or something about our application
+changes. After certificate expire we need to regenarate new certificate.
+
+=============================================================================
+
+Helmet.js:-
+Helmet.js is security tool which is used to secure our node application. We
+simply install helmet from npm and then configure it as express middleware.
+You can use helmet() to add all sort of security for ex: XSS attack, sniffing,
+and many more. You can call them individually also to secure from certain type
+of attack. It adds security header which protect our server from attackers 
+and also give minimum amount of information to show on browser so attackers 
+can't take advantage any dependency you use in server.
+Helmet can't help you secure from everything but for most cases if you 
+validate request and response accordingly and also use helmet your site will 
+be secure.
+
+==============================================================================
+
+Authorization vs Authentication:-
+
+Authorization is whether the user has permission to access those files or not.
+Authorization is also known as access control to check which user has
+permission to access files.
+
+Authentication is whether user is who they claim to be usually using username
+and password. It is security step to identify user.
+
+==============================================================================
+
+Social Login and OAuth:-
+
+Using social signin accounts like google, twitter, facebook you can 
+authenticate any application without any issue and those social companies
+will secure users password and account security.
+
+OAuth is social login, it helps users to login once at any social platform
+like google and then use it to create new account on any site best part is
+these sites doesn't know your google password and in order to verify you
+or login you it request to google servers to authenticate user which is
+far more safer because google uses very advance security and encryption
+to secure your credentials.
+
+OAuth2 is standard which is used to authenticate users using OAuth. It has
+4 major parts or terms:
+
+1) Resource Owner (User)
+2) Client (Web App)
+3) Resource Server (API or Backend)
+4) Authorization Server (Auth server ex: Google)
+
+To work with OAuth you need to create and configure your server on OAuth
+server or dashboard for ex: google. Google require its account for person
+creating auth server and fill required credentials which google require
+like your website, redirect route, API key to authenticate your server, etc.
+After auth google gives us client id and client secret.
+
+Passport.js is a tool which is used to create OAuth protocol authentication
+in node.js application. It supports more that 500+ statergy or ways to
+implement OAuth. It supports multiple platforms like Google, Facebook,
+Twitter, LinkedIn, etc.
+
+Passport.js handles all steps required to follow OAuth protocol and social
+services protocols by itself. We just require to pass appropriate values and
+got by from social services developer server setup like client id, callback
+route, success route, session, etc.
+
+==============================================================================
+
+API Keys:-
+
+It is way to authenticate or restrict only authorize users can use server or 
+api. 
+API keys are project-centric credentials that serve two purposes:
+-> Project Identifiction: 
+Identify the app or the project that's making to the call to the api or sdk.
+-> Project Authorization: 
+Check wheather the calling app has been granted access to call the api or 
+sdk and has enabled the api or sdk in the project.
+
+You can also have public api but if user can doesn't abuse api by making
+too many requests to do so we add limit of request under defined amount of 
+time. It is known as rate limiting. To limit number of api request made by 
+user.
+
+Note: Always follow Principle of least privillege.
+
+==============================================================================
+
+JWT:-
+
+JWT is type of access token, its much like API keys. It uniquely identify
+a specific user of an application. It acts as set of credentials for that user
+api to grant access to an api.
+
+It is generated when user authenticate by username and password, server
+returns access_token (JWT token) if user authenticated. After that in
+every request JWT token which sent to client is also sent to conform identity.
+
+[Token Based Authentication]
+
+1) User ==== (Username and Password) ===> Server (API)
+return:- User <=== (Access Token: JWT) ==== Server (API)
+
+2) User ==== GET /api/user (Authorization: Bearer <JWT>) ====> Server (API)
+return:- User <==== HTTP 200 (Username: "amazing") ==== Server (API)
+
+JWT token is passed through header when user make request after authentication.
+Passed in header information as Authorization: Bearer <JWT>
+
+JWT token follow JWT standard which tell developer how to decode token. So
+we can validate token before trusting any request and verify permissions of
+user. JWT holds credentials which has some information stored in and then
+its encrypted form. It holds different type of credential to verify user
+for ex: country code, biometric, or any additional identifing information.
+JWT can be customized to have additional information and extended to add
+additional data. 
+
+It uses base64 function to encode and decode information. Every JWT token
+has three field header, payload, and verify signature. Because jwt token 
+can't be private and public in header its https or ssl/tls job to secure
+this peace of header to communicate safely.
+
+==============================================================================
+
+Cookie-Session and Express Session:-
+
+Cookie session is browser based session which encrypts and save data inside 
+browser cookies and send values with each request.
+for ex: authentication details.
+
+Express session is server side session which saves data inside database but
+return session id as cookie to store in browser user session.
+
+==============================================================================
