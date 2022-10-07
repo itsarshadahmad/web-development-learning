@@ -1,0 +1,33 @@
+Sockets:
+Computer network are full of sockets from IP Socket, Datagram Sockets, 
+TCP Sockets, HTTP, WebSockets, Network Sockets and many more.
+
+==========================================================================
+
+Polling:
+Polling is a mechanism used by the Push technology whereby a request is 
+sent by the client to the server at regular intervals. In return, the 
+server updates the status of connected client. Between two polling 
+requests, the server stores the updates sent to the client in its memory 
+until the next polling request is received.
+
+Sending request to server in this way has problems and also it will 
+increase our server load. If add too much delay then working will take
+time to send and get response which is not actually real time data
+transfer. It has other disadvantages too.
+
+POLLING = 100 // 100ms that make 120 request per minute.
+
+Client <---- Half Duplex (Polling rate 100ms) ----> Server
+
+==========================================================================
+
+WebSocket:
+The WebSocket API is an advanced technology that makes it possible to 
+open a two-way interactive communication session between the user's 
+browser and a server. With this API, you can send messages to a server 
+and receive event-driven responses without having to poll the server for 
+a reply.
+
+Client <===== Full Duplex =====> Server
+

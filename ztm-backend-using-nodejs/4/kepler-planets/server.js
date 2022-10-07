@@ -13,7 +13,9 @@ function isHabitablePlanet(planet) {
 // CSV [createReadStream()] --> PIPE [parse()] --> Formatted Data
 // Creating read byte stream (Readable Stream) of .csv file data.
 fs.createReadStream('kepler_data.csv')
-    // Pipe is used to attach a Writable stream to the readable stream so that it consequently switches into flowing mode and then pushes all the data that it has to the attached Writable.
+    /* Pipe is used to attach a Writable stream to the readable stream so that it consequently 
+    switches into flowing mode and then pushes all the data that it has to the attached 
+    Writable. */
     .pipe(parse({
         // # to indicate comment syntax
         comment: '#',
@@ -34,3 +36,14 @@ fs.createReadStream('kepler_data.csv')
         }));
         console.log(`${habitablePlanets.length} habitable planets found!`);
     });
+
+/* Streams:
+It is used to transfer data, and increase performance.
+Buffers:
+Temporary storage spot for a chunk of data that is being transferred from one place to 
+another. The buffer is filled with data, then passed along. Transfer small chunks of data
+at a time.
+
+Buffer is used to get chunks of data from source and use streams to transfer files chunk
+by chunk on internet.
+*/

@@ -1,0 +1,32 @@
+GraphQL:-
+
+GraphQL is a query language for APIs and a runtime for fulfilling those 
+queries with your existing data. GraphQL was developed internally by 
+Facebook in 2012 before being publicly released in 2015. As an 
+alternative to REST, GraphQL lets developers construct requests that 
+pull data from multiple data sources in a single API call.
+
+GraphQL provides a complete and understandable description of the data 
+in your API, gives clients the power to ask for exactly what they need 
+and nothing more, makes it easier to evolve APIs over time, and enables 
+powerful developer tools.
+
+Additionally, GraphQL gives API maintainers the flexibility to add or 
+deprecate fields without impacting existing queries. Developers can 
+build APIs with whatever methods they prefer, and the GraphQL 
+specification will ensure they function in predictable ways to clients.
+
+It supports almost all frontend and backend languages. It helps with
+data overfetching and underfetching by specifing exactly which data you
+need. In Rest you need multiple model of data or multiple routes where
+in GraphQL you need just one todo so. Example query can be handle in 
+single route, mutation of data or modification post request will handle
+in another compare to Rest where you need multiple routes, http verbs,
+to deal with data.
+
+In GraphQL types are used to specify task, for ex. query can be handle
+in query type, data modification can be handle in mutatuon type, etc.
+
+GraphQL is not perfect solution or replacement for REST API because 
+it also add complexity which might not be worth for every application.
+
