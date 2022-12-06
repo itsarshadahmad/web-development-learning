@@ -1,5 +1,5 @@
 Sockets:
-Computer network are full of sockets from IP Socket, Datagram Sockets, 
+Computer network are full of sockets from IP Socket, Datagram (UDP) Sockets, 
 TCP Sockets, HTTP, WebSockets, Network Sockets and many more.
 
 ==========================================================================
@@ -30,4 +30,6 @@ and receive event-driven responses without having to poll the server for
 a reply.
 
 Client <===== Full Duplex =====> Server
+
+============================================================================
 
