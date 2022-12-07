@@ -20,7 +20,7 @@ POLLING = 100 // 100ms that make 120 request per minute.
 
 Client <---- Half Duplex (Polling rate 100ms) ----> Server
 
-==========================================================================
+============================================================================
 
 WebSocket:
 The WebSocket API is an advanced technology that makes it possible to 
@@ -31,5 +31,18 @@ a reply.
 
 Client <===== Full Duplex =====> Server
 
-============================================================================
+=============================================================================
 
+Namespaces:
+
+A Namespace is a communication channel that allows you to split the logic of 
+your application over a single shared connection (also called "multiplexing").
+
+==============================================================================
+
+Rooms:
+
+A room is an arbitrary channel that sockets can join and leave. It can be 
+used to broadcast events to a subset of clients.
+
+============================================================================
